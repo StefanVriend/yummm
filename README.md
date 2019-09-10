@@ -1,1 +1,6 @@
-# yummm
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+yummm
+=====
+
+> "Coloring with all delicious food items"
