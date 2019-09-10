@@ -9,4 +9,6 @@ URL: https://github.com/StefanVriend/yummm
 BugReports: URL: https://github.com/StefanVriend/yummm/issues
 Encoding: UTF-8
 LazyData: true
+Suggests:
+	dplyr
 RoxygenNote: 6.1.0
