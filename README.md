@@ -3,9 +3,10 @@
 yummm
 =====
 
-> Coloring with all delicious food items
+Overview
+--------
 
-Use your favourite food items to colour your graphics and texts.
+yummm is a package for using the colours of your favourite food items in creating graphics.
 
 Installation
 ------------
