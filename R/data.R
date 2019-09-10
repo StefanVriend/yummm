@@ -4,7 +4,7 @@
 #'
 #' @format A data frame with 1000 observations and 2 variables:
 #' \describe{
-#'   \item{ID}{Personal IDs for supermarkt visitors (1--1000)}
+#'   \item{id}{Personal IDs for supermarkt visitors (1--1000)}
 #'   \item{n}{Average umber of bananas eaten per week (0--10)}
 #' }
 
