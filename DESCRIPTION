@@ -1,10 +1,10 @@
 Package: yummm
+Type: package
 Title: Coloring with all delicious food items
 Version: 0.1.0
 Author: Stefan J.G. Vriend
 Maintainer: Stefan J.G. Vriend <svriend@gmail.com>
-Description: Use your favourite food items 
-    to colour your graphics and texts.
+Description: Use your favourite food items to colour your graphics and texts.
 URL: https://github.com/StefanVriend/yummm
 BugReports: URL: https://github.com/StefanVriend/yummm/issues
 Depends:
