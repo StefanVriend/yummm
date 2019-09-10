@@ -7,5 +7,6 @@
 #'   \item{id}{Personal IDs for supermarkt visitors (1--1000)}
 #'   \item{n}{Average umber of bananas eaten per week (0--10)}
 #' }
+#'
 
 "bpw"
