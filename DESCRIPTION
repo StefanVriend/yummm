@@ -8,4 +8,5 @@ Description: Create colorful and delicious graphics and texts using your favouri
 URL: https://github.com/StefanVriend/yummm
 BugReports: URL: https://github.com/StefanVriend/yummm/issues
 Encoding: UTF-8
+LazyData: true
 RoxygenNote: 6.1.0
