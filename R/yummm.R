@@ -1,15 +1,15 @@
-#' @title Coloring with all delicious food items
+#' @title Delicious colors to decorate your graphics
 #' @name yummm
 #'
 #' @description Use your favourite food items to colour your graphics and texts.
 #'
 #' @param food a character representing a food item of your choice.
 #'
-#' @return The hexadecimal color code corresponding to the food item in `food`.
+#' @return A character string (in hexadecimal format) corresponding to the food item of your choice.
 #'
 #' @seealso [yummm::in.yummm()]
 #'
-#' @examples
+#' @example
 #' yummm("banana")
 #'
 #' @import dplyr
@@ -37,6 +37,9 @@ yummm <- function(food) {
 #' @title Is this food item part of yummm?
 #'
 #' @description Find out whether your favourite food item is part of the `yummm` package.
+#'
+#' @example
+#' in.yummm("banana")
 #'
 #' @return Logical, `TRUE` or `FALSE`
 #' @export

@@ -1,7 +1,7 @@
 Package: yummm
 Type: package
 Title: Delicious colours
-Version: 0.1.0
+Version: 0.0.99999
 Author: Stefan J.G. Vriend
 Maintainer: Stefan J.G. Vriend <svriend@gmail.com>
 Description: Create colorful and delicious graphics and texts using your favourite foods.

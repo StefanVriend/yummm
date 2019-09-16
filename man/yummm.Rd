@@ -2,7 +2,7 @@
 % Please edit documentation in R/yummm.R
 \name{yummm}
 \alias{yummm}
-\title{Coloring with all delicious food items}
+\title{Delicious colors to decorate your graphics}
 \usage{
 yummm(food)
 }
@@ -10,14 +10,10 @@ yummm(food)
 \item{food}{a character representing a food item of your choice.}
 }
 \value{
-The hexadecimal color code corresponding to the food item in `food`.
+A character string (in hexadecimal format) corresponding to the food item of your choice.
 }
 \description{
-This is the main function from the `yummm` package.
-}
-\examples{
-yummm("banana")
-
+Use your favourite food items to colour your graphics and texts.
 }
 \seealso{
 [yummm::in.yummm()]

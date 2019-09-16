@@ -1,13 +1,15 @@
 # Food items
 foods <- c(
   "banana",
-  "avocado"
+  "avocado",
+  "kiwi"
 )
 
 # Colours
 cols <- c(
   "#FFCF4A",
-  "#332C34"
+  "#332C34",
+  "#7FA430"
 )
 
 # Combine
