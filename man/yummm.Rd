@@ -15,6 +15,10 @@ A character string (in hexadecimal format) corresponding to the food item of you
 \description{
 Use your favourite food items to colour your graphics and texts.
 }
+\examples{
+yummm("banana")
+
+}
 \seealso{
-[yummm::in.yummm()]
+\code{\link{in.yummm}}
 }

@@ -7,9 +7,9 @@
 #'
 #' @return A character string (in hexadecimal format) corresponding to the food item of your choice.
 #'
-#' @seealso [yummm::in.yummm()]
+#' @seealso \code{\link{in.yummm}}
 #'
-#' @example
+#' @examples
 #' yummm("banana")
 #'
 #' @import dplyr
@@ -38,10 +38,13 @@ yummm <- function(food) {
 #'
 #' @description Find out whether your favourite food item is part of the `yummm` package.
 #'
-#' @example
+#' @examples
 #' in.yummm("banana")
 #'
-#' @return Logical, `TRUE` or `FALSE`
+#' @return Logical, TRUE or FALSE
+#'
+#' @inheritParams yummm
+#'
 #' @export
 #'
 

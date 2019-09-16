@@ -6,9 +6,16 @@
 \usage{
 in.yummm(food)
 }
+\arguments{
+\item{food}{a character representing a food item of your choice.}
+}
 \value{
-Logical, `TRUE` or `FALSE`
+Logical, TRUE or FALSE
 }
 \description{
 Find out whether your favourite food item is part of the `yummm` package.
+}
+\examples{
+in.yummm("banana")
+
 }
