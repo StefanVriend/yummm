@@ -25,9 +25,13 @@ yummm <- function(food) {
     colour
 
   if(any(food %in% food.items == FALSE)) {
-    cat("Error: ", '"', food,  '"', " is ", crayon::underline("not"), " part of yummm.\n",
-        "Find out whether your favourite food items are part of yummm using in.yummm().",
-        sep="")
+    not.in.yummm <- food[!(food %in% food.items)]
+    for(i in 1:length(not.in.yummm)) {
+      cat("Error: ", '"', not.in.yummm[i],  '"', " is ",
+          crayon::underline("not"), " part of yummm.\n",
+          "Find out whether your favourite food items are part of yummm using in.yummm().\n",
+          sep="")
+    }
   }
 
   if(!any(food %in% food.items == FALSE)) return(dplyr::pull(colour))
@@ -51,6 +55,21 @@ yummm <- function(food) {
 #'
 
 in.yummm <- function(food) {
-  if(food %in% food.items) cat(crayon::cyan('"', food, '"', " is part of yummm.", sep=""))
-  if(!(food %in% food.items)) cat(crayon::red('"', food, '"', "is ", crayon::underline("not"), " part of yummm.", sep=""))
+
+  # Part of yummm
+  part.of.yummm <- food[food %in% food.items]
+  if(length(part.of.yummm) != 0) {
+    for(i in 1:length(part.of.yummm)) {
+      cat(crayon::cyan('"', part.of.yummm[i], '"', " is part of yummm.\n", sep=""))
+    }
+  }
+
+  # Not in yummm
+  not.in.yummm <- food[!(food %in% food.items)]
+  if(length(not.in.yummm) != 0) {
+    for(i in 1:length(not.in.yummm)) {
+      cat(crayon::red('"', not.in.yummm[i], '"', "is ",
+                      crayon::underline("not"), " part of yummm.\n", sep=""))
+    }
+  }
 }
