@@ -13,6 +13,7 @@
 #' @examples
 #' smoothie(c("banana", "kiwi"))
 #'
+#' @importFrom grDevices col2rgb
 #' @export
 
 smoothie <- function(food, alpha=rep(1/length(food), length(food))) {
@@ -26,7 +27,7 @@ smoothie <- function(food, alpha=rep(1/length(food), length(food))) {
   if(sum(alpha) != 1) cat("Error: the alpha levels must sum to 1.")
 
   if(sum(alpha) == 1) {
-    colours.rgb <- t(col2rgb(colours))
+    colours.rgb <- t(grDevices::col2rgb(colours))
 
     if(any(food %in% food.items == FALSE)) {
       not.in.yummm <- food[!(food %in% food.items)]
@@ -57,3 +58,6 @@ smoothie <- function(food, alpha=rep(1/length(food), length(food))) {
 col2hex <- function(col) {
   paste0("#", paste(toupper(as.hexmode(col)), collapse=""))
 }
+
+# Satisfy RCMD Checks
+Colour <- Food <- NULL

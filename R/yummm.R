@@ -70,3 +70,7 @@ in.yummm <- function(food) {
                 }
               })
 }
+
+
+# Satisfy RCMD Checks
+Colour <- Food <- NULL
