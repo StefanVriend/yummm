@@ -7,7 +7,7 @@
 in.yummm(food)
 }
 \arguments{
-\item{food}{a character representing a food item of your choice.}
+\item{food}{a character vector representing the food items of your choice.}
 }
 \value{
 Logical, TRUE or FALSE

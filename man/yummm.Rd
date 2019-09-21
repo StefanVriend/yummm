@@ -7,7 +7,7 @@
 yummm(food)
 }
 \arguments{
-\item{food}{a character representing a food item of your choice.}
+\item{food}{a character vector representing the food items of your choice.}
 }
 \value{
 A character string (in hexadecimal format) corresponding to the food item of your choice.

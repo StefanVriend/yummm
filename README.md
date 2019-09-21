@@ -1,22 +1,20 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-yummm
-=====
 
-Overview
---------
+# yummm
 
-yummm is a package for using the colours of your favourite food items in creating graphics.
+## Overview
 
-Installation
-------------
+Spatial variation of the strength of density dependence in
+age-structured populations.
+
+## Installation
 
 ``` r
 devtools::install_github("StefanVriend/yummm")
 ```
 
-Usage
------
+## Usage
 
 ``` r
 library(yummm)
@@ -26,7 +24,9 @@ yummm("banana")
 
 ``` r
 # Do not run
-hist(..., col=yummm("banana"))
+library(ggplot2)
+ggplot(bpw, aes(x=n)) + 
+  geom_histogram(binwidth=1, fill=yummm("banana"), colour="gray70")
 ```
 
-![](man/figures/README-example-1.png)
+![](man/figures/README-example-1.png)<!-- -->
