@@ -1,10 +1,10 @@
 Package: yummm
 Type: package
-Title: Delicious colours
+Title: Delicious colouring
 Version: 0.0.99999
 Author: Stefan J.G. Vriend
 Maintainer: Stefan J.G. Vriend <svriend@gmail.com>
-Description: Create colorful and delicious graphics and texts using your favourite foods.
+Description: Create colorful and delicious graphics and texts using your favourite food.
 URL: https://github.com/StefanVriend/yummm
 BugReports: URL: https://github.com/StefanVriend/yummm/issues
 Encoding: UTF-8
@@ -12,5 +12,6 @@ LazyData: true
 LazyLoad: true
 Imports: crayon,
 		 dplyr,
+		 purrr,
 		 tibble
 RoxygenNote: 6.1.1

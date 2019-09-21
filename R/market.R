@@ -1,10 +1,10 @@
-#' The Yummm Market: a table of food items and colours
+#' The yummm market: a table of food and colours
 #'
 #' @name yummm.market
 #'
 #' @format
 #' Dataframe of character vertors. Column entries: \describe{
-#'   \item{Food}{Food items.}
+#'   \item{Food}{Food.}
 #'   \item{Colour}{Colours.}
 #' }
 #'

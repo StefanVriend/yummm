@@ -4,15 +4,15 @@
 \name{yummm.market}
 \alias{yummm.market}
 \alias{food.items}
-\title{The Yummm Market: a table of food items and colours}
+\title{The yummm market: a table of food and colours}
 \format{Dataframe of character vertors. Column entries: \describe{
-  \item{Food}{Food items.}
+  \item{Food}{Food.}
   \item{Colour}{Colours.}
 }}
 \usage{
 food.items
 }
 \description{
-The Yummm Market: a table of food items and colours
+The yummm market: a table of food and colours
 }
 \keyword{datasets}
