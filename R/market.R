@@ -14,14 +14,16 @@
 food.items <- c(
   "banana",
   "avocado",
-  "kiwi"
+  "kiwi",
+  "orange"
 )
 
 # Colours
 colours <- c(
   "#FFCF4A",
   "#332C34",
-  "#7FA430"
+  "#7FA430",
+  "#FFA210"
 )
 
 
