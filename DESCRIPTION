@@ -19,3 +19,9 @@ License: GPL-2
 LazyData: true
 LazyLoad: true
 RoxygenNote: 6.1.1
+Collate: 
+    'data.R'
+    'food-colours.R'
+    'market.R'
+    'smoothie.R'
+    'yummm.R'

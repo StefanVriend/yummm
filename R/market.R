@@ -1,6 +1,6 @@
 #' The yummm market: a table of food and colours
 #'
-#' @name yummm.market
+#' A table with all food and colours in \code{yummm}. Food and colours are stored in \code{food-colours.R}.
 #'
 #' @format
 #' Dataframe of character vertors. Column entries: \describe{
@@ -8,26 +8,13 @@
 #'   \item{Colour}{Colours.}
 #' }
 #'
+#' @name yummm.market
+#'
+#' @include food-colours.R
+#'
 #' @import tibble
 
-# Food items
-food.items <- c(
-  "banana",
-  "avocado",
-  "kiwi",
-  "orange"
-)
-
-# Colours
-colours <- c(
-  "#FFCF4A",
-  "#332C34",
-  "#7FA430",
-  "#FFA210"
-)
-
-
-# Combine in market
+# Create market
 tibble::tibble(
   Food = food.items,
   Colour = colours) %>%
