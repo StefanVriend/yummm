@@ -21,7 +21,7 @@ LazyLoad: true
 RoxygenNote: 6.1.1
 Collate: 
     'data.R'
-    'food-colours.R'
+    'food-colors.R'
     'market.R'
     'smoothie.R'
     'yummm.R'

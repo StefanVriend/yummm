@@ -1,11 +1,11 @@
 #' @title Delicious colors to decorate your graphics
 #' @name yummm
 #'
-#' @description Use your favourite food items to colour your graphics and texts.
+#' @description Use your favorite food to color your graphics and texts.
 #'
-#' @param food a character vector representing the food items of your choice.
+#' @param food a character vector representing the food of your choice.
 #'
-#' @return A character string (in hexadecimal format) corresponding to the food item of your choice.
+#' @return A character string (in hexadecimal format) corresponding to the food of your choice.
 #'
 #' @seealso \code{\link{in.yummm}}
 #'
@@ -21,8 +21,8 @@ yummm <- function(food) {
 
   yummm.market %>%
     dplyr::filter(Food %in% food) %>%
-    dplyr::select(Colour) ->
-    colour
+    dplyr::select(Color) ->
+    color
 
   if(any(food %in% food.items == FALSE)) {
     not.in.yummm <- food[!(food %in% food.items)]
@@ -31,21 +31,21 @@ yummm <- function(food) {
                 .f = ~{
                   cat("Error: ", '"', .x,  '"', " is ",
                       crayon::underline("not"), " part of yummm.\n",
-                      "Find out whether your favourite food ",
+                      "Find out whether your favorite food ",
                       "is part of yummm using in.yummm().\n",
                       sep="")
                 })
   }
 
-  if(!any(food %in% food.items == FALSE)) return(dplyr::pull(colour))
+  if(!any(food %in% food.items == FALSE)) return(dplyr::pull(color))
 
 }
 
 
-#' @title Is this food item part of yummm?
+#' @title Is this food part of yummm?
 #' @name in.yummm
 #'
-#' @description Find out whether your favourite food item is part of the `yummm` package.
+#' @description Find out whether your favorite food is part of the `yummm` package.
 #'
 #' @examples
 #' in.yummm("banana")
@@ -73,4 +73,4 @@ in.yummm <- function(food) {
 
 
 # Satisfy RCMD Checks
-Colour <- Food <- NULL
+Color <- Food <- NULL

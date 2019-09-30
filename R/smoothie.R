@@ -1,12 +1,12 @@
 #' @title Delicious smoothies to decorate your graphics
 #' @name smoothie
 #'
-#' @description Use your favourite smoothie to colour your graphics and texts.
+#' @description Use your favorite smoothie to color your graphics and texts.
 #'
 #' @param food a character vector representing the ingredients of your smoothie.
 #' @param alpha a vector opacity levels, with compatible dimensions to \code{foods}. Each level in [0,1]. Default is \code{1/length(food)}.
 #'
-#' @return A character string (in hexadecimal format) corresponding to the smoothie created with the food items of your choice.
+#' @return A character string (in hexadecimal format) corresponding to the smoothie created with the food of your choice.
 #'
 #' @seealso \code{\link{yummm}}
 #'
@@ -20,14 +20,14 @@ smoothie <- function(food, alpha=rep(1/length(food), length(food))) {
 
   yummm.market %>%
     dplyr::filter(Food %in% food) %>%
-    dplyr::select(Colour) %>%
-    dplyr::pull(Colour) ->
-    colours
+    dplyr::select(Color) %>%
+    dplyr::pull(Color) ->
+    colors
 
   if(sum(alpha) != 1) cat("Error: the alpha levels must sum to 1.")
 
   if(sum(alpha) == 1) {
-    colours.rgb <- t(grDevices::col2rgb(colours))
+    colors.rgb <- t(grDevices::col2rgb(colors))
 
     if(any(food %in% food.items == FALSE)) {
       not.in.yummm <- food[!(food %in% food.items)]
@@ -36,7 +36,7 @@ smoothie <- function(food, alpha=rep(1/length(food), length(food))) {
                   .f = ~{
                     cat("Error: ", '"', .x,  '"', " is ",
                         crayon::underline("not"), " part of yummm.\n",
-                        "Find out whether your favourite food ",
+                        "Find out whether your favorite food ",
                         "is part of yummm using in.yummm().\n",
                         sep="")
                   })
@@ -60,4 +60,4 @@ col2hex <- function(col) {
 }
 
 # Satisfy RCMD Checks
-Colour <- Food <- NULL
+Color <- Food <- NULL

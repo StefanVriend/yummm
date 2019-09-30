@@ -2,18 +2,18 @@
 % Please edit documentation in R/yummm.R
 \name{in.yummm}
 \alias{in.yummm}
-\title{Is this food item part of yummm?}
+\title{Is this food part of yummm?}
 \usage{
 in.yummm(food)
 }
 \arguments{
-\item{food}{a character vector representing the food items of your choice.}
+\item{food}{a character vector representing the food of your choice.}
 }
 \value{
 Logical, TRUE or FALSE
 }
 \description{
-Find out whether your favourite food item is part of the `yummm` package.
+Find out whether your favorite food is part of the `yummm` package.
 }
 \examples{
 in.yummm("banana")

@@ -6,8 +6,8 @@ food.items <- c(
   "orange"
 )
 
-# Colours
-colours <- c(
+# Colors
+colors <- c(
   "#FFCF4A",
   "#332C34",
   "#7FA430",

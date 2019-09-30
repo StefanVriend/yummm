@@ -7,13 +7,13 @@
 yummm(food)
 }
 \arguments{
-\item{food}{a character vector representing the food items of your choice.}
+\item{food}{a character vector representing the food of your choice.}
 }
 \value{
-A character string (in hexadecimal format) corresponding to the food item of your choice.
+A character string (in hexadecimal format) corresponding to the food of your choice.
 }
 \description{
-Use your favourite food items to colour your graphics and texts.
+Use your favorite food to color your graphics and texts.
 }
 \examples{
 yummm("banana")

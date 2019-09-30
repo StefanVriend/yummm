@@ -3,15 +3,15 @@
 \docType{data}
 \name{yummm.market}
 \alias{yummm.market}
-\title{The yummm market: a table of food and colours}
+\title{The yummm market: a table of food and colors}
 \format{Dataframe of character vertors. Column entries: \describe{
   \item{Food}{Food.}
-  \item{Colour}{Colours.}
+  \item{Color}{Colors.}
 }}
 \usage{
 yummm.market
 }
 \description{
-A table with all food and colours in \code{yummm}. Food and colours are stored in \code{food-colours.R}.
+A table with all food and colors in \code{yummm}. Food and colors are stored in \code{food-colors.R}.
 }
 \keyword{datasets}

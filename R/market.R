@@ -1,22 +1,22 @@
-#' The yummm market: a table of food and colours
+#' The yummm market: a table of food and colors
 #'
-#' A table with all food and colours in \code{yummm}. Food and colours are stored in \code{food-colours.R}.
+#' A table with all food and colors in \code{yummm}. Food and colors are stored in \code{food-colors.R}.
 #'
 #' @format
 #' Dataframe of character vertors. Column entries: \describe{
 #'   \item{Food}{Food.}
-#'   \item{Colour}{Colours.}
+#'   \item{Color}{Colors.}
 #' }
 #'
 #' @name yummm.market
 #'
-#' @include food-colours.R
+#' @include food-colors.R
 #'
 #' @import tibble
 
 # Create market
 tibble::tibble(
   Food = food.items,
-  Colour = colours) %>%
+  Color = colors) %>%
   dplyr::arrange(Food) ->
   yummm.market
