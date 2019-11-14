@@ -20,8 +20,7 @@ smoothie <- function(food, alpha=rep(1/length(food), length(food))) {
 
   yummm.market %>%
     dplyr::filter(Food %in% food) %>%
-    dplyr::select(Color) %>%
-    dplyr::pull(Color) ->
+    dplyr::pull(Palette) ->
     colors
 
   if(sum(alpha) != 1) cat("Error: the alpha levels must sum to 1.")
@@ -29,23 +28,22 @@ smoothie <- function(food, alpha=rep(1/length(food), length(food))) {
   if(sum(alpha) == 1) {
     colors.rgb <- t(grDevices::col2rgb(colors))
 
-    if(any(food %in% food.items == FALSE)) {
+    if(any(food %in% yummm.market$Food == FALSE)) {
       not.in.yummm <- food[!(food %in% food.items)]
 
       purrr::walk(.x = not.in.yummm,
                   .f = ~{
-                    cat("Error: ", '"', .x,  '"', " is ",
-                        crayon::underline("not"), " part of yummm.\n",
+                    cat("Error: ", '"', .x,  '"', " is not part of yummm.\n",
                         "Find out whether your favorite food ",
                         "is part of yummm using in.yummm().\n",
                         sep="")
                   })
     }
 
-    if(!any(food %in% food.items == FALSE)) {
-      col2hex(c(ceiling(sum(colours.rgb[,1] * alpha)),
-                ceiling(sum(colours.rgb[,2] * alpha)),
-                ceiling(sum(colours.rgb[,3] * alpha))
+    if(!any(food %in% yummm.market$Food == FALSE)) {
+      col2hex(c(ceiling(sum(colors.rgb[,1] * alpha)),
+                ceiling(sum(colors.rgb[,2] * alpha)),
+                ceiling(sum(colors.rgb[,3] * alpha))
       )) -> smoothie
 
       return(smoothie)
