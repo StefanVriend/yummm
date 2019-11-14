@@ -1,22 +1,28 @@
-#' The yummm market: a table of food and colors
+#' The yummm market: a table of food and palettes
 #'
-#' A table with all food and colors in \code{yummm}. Food and colors are stored in \code{food-colors.R}.
+#' A table with all food and palettes in \code{yummm}.
 #'
 #' @format
-#' Dataframe of character vertors. Column entries: \describe{
-#'   \item{Food}{Food.}
-#'   \item{Color}{Colors.}
+#' Dataframe of two columns: \describe{
+#'   \item{Food}{a character. Food.}
+#'   \item{Palette}{a list. Palette of colors in hexadecimal format.}
 #' }
 #'
 #' @name yummm.market
 #'
-#' @include food-colors.R
-#'
 #' @import tibble
 
+# Create list of food colors
+yummm.list <- list(
+  banana = "#FFCF4A",
+  avocado = "#332C34",
+  kiwi = "#7FA430",
+  orange = "#FFA210",
+  blueberry = "#4F65AD"
+)
+
 # Create market
-tibble::tibble(
-  Food = food.items,
-  Color = colors) %>%
-  dplyr::arrange(Food) ->
-  yummm.market
+yummm.market <- tibble::tibble(
+  Food = names(yummm.list),
+  Palette = yummm.list
+)

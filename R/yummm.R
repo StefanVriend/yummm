@@ -21,11 +21,11 @@ yummm <- function(food) {
 
   yummm.market %>%
     dplyr::filter(Food %in% food) %>%
-    dplyr::select(Color) ->
+    dplyr::pull(Palette) ->
     color
 
-  if(any(food %in% food.items == FALSE)) {
-    not.in.yummm <- food[!(food %in% food.items)]
+  if(any(food %in% yummm.market$Food == FALSE)) {
+    not.in.yummm <- food[!(food %in% yummm.market$Food)]
 
     purrr::walk(.x = not.in.yummm,
                 .f = ~{
@@ -37,7 +37,7 @@ yummm <- function(food) {
                 })
   }
 
-  if(!any(food %in% food.items == FALSE)) return(dplyr::pull(color))
+  if(!any(food %in% yummm.market$Food == FALSE)) return(unlist(color))
 
 }
 
@@ -61,12 +61,11 @@ in.yummm <- function(food) {
 
   purrr::walk(.x = food,
               .f = ~{
-                part.of.yummm <- .x %in% food.items
+                part.of.yummm <- .x %in% yummm.market$Food
                 if(part.of.yummm == TRUE) {
                   cat(crayon::cyan('"', .x, '"', " is part of yummm.\n", sep=""))
                 } else {
-                  cat(crayon::red('"', .x, '"', " is ",
-                                  crayon::underline("not"), " part of yummm.\n", sep=""))
+                  cat(crayon::red('"', .x, '"', " is not part of yummm.\n", sep=""))
                 }
               })
 }
