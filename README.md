@@ -5,8 +5,6 @@
 
 ## Overview
 
-Spatial variation of the strength of density dependence in
-age-structured populations.
 
 ## Installation
 
