@@ -20,6 +20,8 @@ Use your favorite smoothie to color your graphics and texts.
 \examples{
 smoothie(c("banana", "kiwi"))
 
+smoothie(c("banana", "kiwi"), alpha=c(0.4, 0.6))
+
 }
 \seealso{
 \code{\link{yummm}}

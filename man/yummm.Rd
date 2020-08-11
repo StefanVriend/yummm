@@ -4,16 +4,21 @@
 \alias{yummm}
 \title{Delicious colors to decorate your graphics}
 \usage{
-yummm(food)
+yummm(food, id)
 }
 \arguments{
 \item{food}{a character vector representing the food of your choice.}
+
+\item{id}{a character vector representing the shade of your food of choice. Possible id's: "01":"10".}
 }
 \value{
 A character string (in hexadecimal format) corresponding to the food of your choice.
 }
 \description{
 Use your favorite food to color your graphics and texts.
+}
+\details{
+Use \code{yummm.palette} to visualize all the shades of the food of your hcoice.
 }
 \examples{
 yummm("banana")

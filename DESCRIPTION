@@ -18,10 +18,4 @@ Encoding: UTF-8
 License: GPL-2
 LazyData: true
 LazyLoad: true
-RoxygenNote: 6.1.1
-Collate: 
-    'data.R'
-    'food-colors.R'
-    'market.R'
-    'smoothie.R'
-    'yummm.R'
+RoxygenNote: 7.1.1
