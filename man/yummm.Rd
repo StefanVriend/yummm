@@ -18,7 +18,7 @@ A character string (in hexadecimal format) corresponding to the food of your cho
 Use your favorite food to color your graphics and texts.
 }
 \details{
-Use \code{yummm.palette} to visualize all the shades of the food of your hcoice.
+Use \code{yummm.palette} to visualize all the shades of the food of your choice.
 }
 \examples{
 yummm("banana")

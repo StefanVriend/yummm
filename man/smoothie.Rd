@@ -4,10 +4,16 @@
 \alias{smoothie}
 \title{Delicious smoothies to decorate your graphics}
 \usage{
-smoothie(food, alpha = rep(1/length(food), length(food)))
+smoothie(
+  food,
+  id = rep("01", length(food)),
+  alpha = rep(1/length(food), length(food))
+)
 }
 \arguments{
 \item{food}{a character vector representing the ingredients of your smoothie.}
+
+\item{id}{a character vector representing the shade of your food of choice. Possible id's: "01":"10". Default is set to "01".}
 
 \item{alpha}{a vector opacity levels, with compatible dimensions to \code{foods}. Each level in [0,1]. Default is \code{1/length(food)}.}
 }

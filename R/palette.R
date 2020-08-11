@@ -10,15 +10,15 @@
 #' @seealso \code{\link{in.yummm}}
 #'
 #' @examples
-#' yummm.palette("banana")
+#' yummm_palette("banana")
 #'
 #' @import shades
 #' @import ggplot2
 #' @import stringr
-#' @importFrom extrafront loadfonts
+#' @importFrom extrafont loadfonts
 #' @export
 
-yummm.palette <- function(food, load_fonts = FALSE) {
+yummm_palette <- function(food, load_fonts = FALSE) {
 
   df <- yummm.market[[food]] %>%
     dplyr::mutate(N = 1,

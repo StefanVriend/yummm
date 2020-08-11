@@ -6,7 +6,7 @@
 #' @param food a character vector representing the food of your choice.
 #' @param id a character vector representing the shade of your food of choice. Possible id's: "01":"10".
 #'
-#' @details Use \code{yummm.palette} to visualize all the shades of the food of your hcoice.
+#' @details Use \code{yummm.palette} to visualize all the shades of the food of your choice.
 #'
 #' @return A character string (in hexadecimal format) corresponding to the food of your choice.
 #'
@@ -22,8 +22,8 @@
 
 yummm <- function(food, id) {
 
-  if(any(food %in% names(yummm.market) == FALSE)) {
-    not.in.yummm <- food[!(food %in% names(yummm.market))]
+  if(any(food %in% names(yummm_market) == FALSE)) {
+    not.in.yummm <- food[!(food %in% names(yummm_market))]
 
     purrr::walk(.x = not.in.yummm,
                 .f = ~{
@@ -36,7 +36,7 @@ yummm <- function(food, id) {
 
   } else if(missing(id)) {
 
-    cat("Please select your favourite shade of", food, sep=" ")
+    cat("Please select your favourite shade using yummm.palette().")
 
   } else if(any(id > 10)) {
 
@@ -47,7 +47,7 @@ yummm <- function(food, id) {
     purrr::map2(.x = food,
                 .y = id,
                 .f = ~{
-                  yummm.market[[.x]] %>%
+                  yummm_market[[.x]] %>%
                     dplyr::filter(ColID == .y) %>%
                     dplyr::pull(Col)
                 }) %>% unlist()
@@ -75,7 +75,7 @@ in.yummm <- function(food) {
 
   purrr::walk(.x = food,
               .f = ~{
-                part.of.yummm <- .x %in% names(yummm.market)
+                part.of.yummm <- .x %in% names(yummm_market)
                 if(part.of.yummm == TRUE) {
                   cat(crayon::cyan('"', .x, '"', " is part of yummm :)\n", sep=""))
                 } else {

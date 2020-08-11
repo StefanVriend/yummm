@@ -25,7 +25,7 @@ smoothie <- function(food, id = rep("01", length(food)),
   colors <- purrr::map2(.x = food,
               .y = id,
               .f = ~{
-                yummm.market[[.x]] %>%
+                yummm_market[[.x]] %>%
                   dplyr::filter(ColID == .y) %>%
                   dplyr::pull(Col)
               }) %>% unlist()
@@ -35,8 +35,8 @@ smoothie <- function(food, id = rep("01", length(food)),
   if(sum(alpha) == 1) {
     colors.rgb <- t(grDevices::col2rgb(colors))
 
-    if(any(food %in% names(yummm.market) == FALSE)) {
-      not.in.yummm <- food[!(food %in% names(yummm.market))]
+    if(any(food %in% names(yummm_market) == FALSE)) {
+      not.in.yummm <- food[!(food %in% names(yummm_market))]
 
       purrr::walk(.x = not.in.yummm,
                   .f = ~{
@@ -47,7 +47,7 @@ smoothie <- function(food, id = rep("01", length(food)),
                   })
     }
 
-    if(!any(food %in% names(yummm.market) == FALSE)) {
+    if(!any(food %in% names(yummm_market) == FALSE)) {
       col2hex(c(ceiling(sum(colors.rgb[,1] * alpha)),
                 ceiling(sum(colors.rgb[,2] * alpha)),
                 ceiling(sum(colors.rgb[,3] * alpha))
