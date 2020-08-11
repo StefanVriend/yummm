@@ -3,6 +3,7 @@
 #' @description Visualization of the 10-color palette of your favorite food.
 #'
 #' @param food a character vector representing the food of your choice.
+#' @param load_fonts TRUE or FALSE. Load fonts to be used in visualisation. Default: FALSE.
 #'
 #' @return A character string (in hexadecimal format) corresponding to the food of your choice.
 #'
@@ -14,26 +15,27 @@
 #' @import shades
 #' @import ggplot2
 #' @import stringr
+#' @importFrom extrafront loadfonts
 #' @export
 
-yummm.palette <- function(food) {
+yummm.palette <- function(food, load_fonts = FALSE) {
 
   df <- yummm.market[[food]] %>%
     dplyr::mutate(N = 1,
-                  TextCol = ifelse(shades::lightness(Col) > 70, "black", "white"),
+                  TextCol = ifelse(shades::lightness(Col) > 60, "black", "white"),
                   Bar = rep(1:(length(Col) / 2), each = 2))
 
-  extrafont::loadfonts(device = "win")
+  if(load_fonts) extrafont::loadfonts(device = "win")
 
   ggplot2::ggplot(df, ggplot2::aes(x = Bar, fill = ColID, y = N)) +
-    ggplot2::geom_bar(stat = "identity", position = "stack", width = 1) +
+    ggplot2::geom_bar(stat = "identity", position = position_stack(reverse=T), width = 1) +
     ggplot2::scale_fill_manual(values = df$Col) +
-    ggplot2::geom_text(ggplot2::aes(label = stringr::str_sub(Col, 2, 7), colour = Col), size = 5,
+    ggplot2::geom_text(ggplot2::aes(label = stringr::str_sub(Col, 2, 7), colour = ColID), size = 5,
                        family = "Nunito", fontface = "bold",
-                       position = ggplot2::position_stack(vjust = 0.9)) +
+                       position = ggplot2::position_stack(vjust = 0.9, reverse=T)) +
     ggplot2::geom_text(ggplot2::aes(label = ColID, colour = ColID), size = 3,
                        family = "Nunito", fontface = "italic",
-                       position = ggplot2::position_stack(vjust = 0.8)) +
+                       position = ggplot2::position_stack(vjust = 0.8, reverse=T)) +
     ggplot2::scale_colour_manual(values = rep(df$TextCol, 2)) +
     ggplot2::theme_void() +
     ggplot2::labs(title = paste0(toupper(stringr::str_sub(food, 1, 1)),
