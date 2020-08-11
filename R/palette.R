@@ -22,21 +22,21 @@ yummm_palette <- function(food, load_fonts = FALSE) {
 
   df <- yummm_market[[food]] %>%
     dplyr::mutate(N = 1,
-                  TextCol = ifelse(shades::lightness(Col) > 60, "black", "white"),
-                  Bar = rep(1:(length(Col) / 2), each = 2))
+                  TextColor = ifelse(shades::lightness(Color) > 60, "black", "white"),
+                  Bar = rep(1:(length(Color) / 2), each = 2))
 
   if(load_fonts) extrafont::loadfonts(device = "win")
 
-  ggplot2::ggplot(df, ggplot2::aes(x = Bar, fill = ColID, y = N)) +
+  ggplot2::ggplot(df, ggplot2::aes(x = Bar, fill = Shade, y = N)) +
     ggplot2::geom_bar(stat = "identity", position = position_stack(reverse=T), width = 1) +
-    ggplot2::scale_fill_manual(values = df$Col) +
-    ggplot2::geom_text(ggplot2::aes(label = stringr::str_sub(Col, 2, 7), colour = ColID), size = 5,
-                       family = "Nunito", fontface = "bold",
+    ggplot2::scale_fill_manual(values = df$Color) +
+    ggplot2::geom_text(ggplot2::aes(label = stringr::str_sub(Color, 2, 7), colour = Shade),
+                       size = 5, family = "Nunito", fontface = "bold",
                        position = ggplot2::position_stack(vjust = 0.9, reverse=T)) +
-    ggplot2::geom_text(ggplot2::aes(label = ColID, colour = ColID), size = 3,
+    ggplot2::geom_text(ggplot2::aes(label = Shade, colour = Shade), size = 3,
                        family = "Nunito", fontface = "italic",
                        position = ggplot2::position_stack(vjust = 0.8, reverse=T)) +
-    ggplot2::scale_colour_manual(values = rep(df$TextCol, 2)) +
+    ggplot2::scale_colour_manual(values = rep(df$TextColor, 2)) +
     ggplot2::theme_void() +
     ggplot2::labs(title = paste0(toupper(stringr::str_sub(food, 1, 1)),
                                  stringr::str_sub(food, 2, -1L)),
