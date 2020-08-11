@@ -1,6 +1,6 @@
 #' The yummm market: a table of food and palettes
 #'
-#' A table with all food and palettes in \code{yummm}. The market is filled using \code{fill.market}.
+#' A table with all food and palettes in \code{yummm}. The market is filled using \code{fill_market}.
 #'
 #' @format
 #' Dataframe of two columns: \describe{
@@ -8,12 +8,12 @@
 #'   \item{Palette}{a list. Palette of colors in hexadecimal format.}
 #' }
 
-"yummm.market"
+"yummm_market"
 
 
 #' Bananas per week
 #'
-#' A fictional dataset containing the average number of bananas eaten per week for 1,000 supermarkt visitors.
+#' A fictional dataset containing the average number of bananas eaten per week for 1,000 supermarket visitors.
 #'
 #' @format A data frame with 1000 observations and 2 variables:
 #' \describe{

@@ -22,14 +22,14 @@ fill_market <- function(food, n = 10) {
                                   number_of_colors = n,
                                   type_of_variable = "categorical")
 
-  pal_df <- tibble::tibble(Col = pal,
-                           ColID = c("01", "02", "03", "04", "05",
+  pal_df <- tibble::tibble(Color = pal,
+                           Shade = c("01", "02", "03", "04", "05",
                                      "06", "07", "08", "09", "10"))
 
   if(file.exists("data/yummm_market.rda")){
     yummm_market[[food]] <- pal_df
   } else {
-    yummm.market <- list(pal_df)
+    yummm_market <- list(pal_df)
     names(yummm_market) <- food
   }
 

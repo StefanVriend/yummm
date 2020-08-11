@@ -15,6 +15,6 @@ A data frame with 1000 observations and 2 variables:
 bpw
 }
 \description{
-A fictional dataset containing the average number of bananas eaten per week for 1,000 supermarkt visitors.
+A fictional dataset containing the average number of bananas eaten per week for 1,000 supermarket visitors.
 }
 \keyword{datasets}
