@@ -20,7 +20,7 @@
 
 yummm_palette <- function(food, load_fonts = FALSE) {
 
-  df <- yummm.market[[food]] %>%
+  df <- yummm_market[[food]] %>%
     dplyr::mutate(N = 1,
                   TextCol = ifelse(shades::lightness(Col) > 60, "black", "white"),
                   Bar = rep(1:(length(Col) / 2), each = 2))
