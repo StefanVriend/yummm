@@ -15,7 +15,7 @@
 #' @examples
 #' yummm(food = "banana", shade = "05")
 #'
-#' @import crayon
+#' @importFrom crayon underline red cyan
 #' @import dplyr
 #' @import purrr
 #' @export
