@@ -4,6 +4,7 @@
 #' @description Use your favorite smoothie to color your graphics and texts.
 #'
 #' @param food a character vector representing the ingredients of your smoothie.
+#' @param id a character vector representing the shade of your food of choice. Possible id's: "01":"10". Default is set to "01".
 #' @param alpha a vector opacity levels, with compatible dimensions to \code{foods}. Each level in [0,1]. Default is \code{1/length(food)}.
 #'
 #' @return A character string (in hexadecimal format) corresponding to the smoothie created with the food of your choice.
@@ -13,23 +14,29 @@
 #' @examples
 #' smoothie(c("banana", "kiwi"))
 #'
+#' smoothie(c("banana", "kiwi"), alpha=c(0.4, 0.6))
+#'
 #' @importFrom grDevices col2rgb
 #' @export
 
-smoothie <- function(food, alpha=rep(1/length(food), length(food))) {
+smoothie <- function(food, id = rep("01", length(food)),
+                     alpha=rep(1/length(food), length(food))) {
 
-  yummm.market %>%
-    dplyr::filter(Food %in% food) %>%
-    dplyr::pull(Palette) ->
-    colors
+  colors <- purrr::map2(.x = food,
+              .y = id,
+              .f = ~{
+                yummm.market[[.x]] %>%
+                  dplyr::filter(ColID == .y) %>%
+                  dplyr::pull(Col)
+              }) %>% unlist()
 
   if(sum(alpha) != 1) cat("Error: the alpha levels must sum to 1.")
 
   if(sum(alpha) == 1) {
     colors.rgb <- t(grDevices::col2rgb(colors))
 
-    if(any(food %in% yummm.market$Food == FALSE)) {
-      not.in.yummm <- food[!(food %in% food.items)]
+    if(any(food %in% names(yummm.market) == FALSE)) {
+      not.in.yummm <- food[!(food %in% names(yummm.market))]
 
       purrr::walk(.x = not.in.yummm,
                   .f = ~{
@@ -40,7 +47,7 @@ smoothie <- function(food, alpha=rep(1/length(food), length(food))) {
                   })
     }
 
-    if(!any(food %in% yummm.market$Food == FALSE)) {
+    if(!any(food %in% names(yummm.market) == FALSE)) {
       col2hex(c(ceiling(sum(colors.rgb[,1] * alpha)),
                 ceiling(sum(colors.rgb[,2] * alpha)),
                 ceiling(sum(colors.rgb[,3] * alpha))
