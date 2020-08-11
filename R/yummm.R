@@ -4,6 +4,9 @@
 #' @description Use your favorite food to color your graphics and texts.
 #'
 #' @param food a character vector representing the food of your choice.
+#' @param id a character vector representing the shade of your food of choice. Possible id's: "01":"10".
+#'
+#' @details Use \code{yummm.palette} to visualize all the shades of the food of your hcoice.
 #'
 #' @return A character string (in hexadecimal format) corresponding to the food of your choice.
 #'
@@ -17,15 +20,10 @@
 #' @import purrr
 #' @export
 
-yummm <- function(food) {
+yummm <- function(food, id) {
 
-  yummm.market %>%
-    dplyr::filter(Food %in% food) %>%
-    dplyr::pull(Palette) ->
-    color
-
-  if(any(food %in% yummm.market$Food == FALSE)) {
-    not.in.yummm <- food[!(food %in% yummm.market$Food)]
+  if(any(food %in% names(yummm.market) == FALSE)) {
+    not.in.yummm <- food[!(food %in% names(yummm.market))]
 
     purrr::walk(.x = not.in.yummm,
                 .f = ~{
@@ -35,9 +33,25 @@ yummm <- function(food) {
                       "is part of yummm using in.yummm().\n",
                       sep="")
                 })
-  }
 
-  if(!any(food %in% yummm.market$Food == FALSE)) return(unlist(color))
+  } else if(missing(id)) {
+
+    cat("Please select your favourite shade of", food, sep=" ")
+
+  } else if(any(id > 10)) {
+
+    cat("Yummm palettes contain 10 colours. Please select a lower ID.")
+
+  } else {
+
+    purrr::map2(.x = food,
+                .y = id,
+                .f = ~{
+                  yummm.market[[.x]] %>%
+                    dplyr::filter(ColID == .y) %>%
+                    dplyr::pull(Col)
+                }) %>% unlist()
+  }
 
 }
 
@@ -61,11 +75,11 @@ in.yummm <- function(food) {
 
   purrr::walk(.x = food,
               .f = ~{
-                part.of.yummm <- .x %in% yummm.market$Food
+                part.of.yummm <- .x %in% names(yummm.market)
                 if(part.of.yummm == TRUE) {
-                  cat(crayon::cyan('"', .x, '"', " is part of yummm.\n", sep=""))
+                  cat(crayon::cyan('"', .x, '"', " is part of yummm :)\n", sep=""))
                 } else {
-                  cat(crayon::red('"', .x, '"', " is not part of yummm.\n", sep=""))
+                  cat(crayon::red('"', .x, '"', " is not part of yummm :(\n", sep=""))
                 }
               })
 }
