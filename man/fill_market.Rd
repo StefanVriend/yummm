@@ -13,5 +13,5 @@ Dataframe of two columns: \describe{
 fill_market(food, n = 10)
 }
 \description{
-Fill the yummm market with a 10-color palette extracted from an image of the food.
+Fill the yummm market with a 10-color palette extracted from an image of the food. NB: This function is only used internally.
 }

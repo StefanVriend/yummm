@@ -40,7 +40,7 @@ yummm_palette <- function(food, load_fonts = FALSE) {
     ggplot2::theme_void() +
     ggplot2::labs(title = paste0(toupper(stringr::str_sub(food, 1, 1)),
                                  stringr::str_sub(food, 2, -1L)),
-                  subtitle = "A 10-colour yummm palette") +
+                  subtitle = "A yummm palette") +
     ggplot2:: theme(legend.position = "none",
                     plot.title = ggplot2::element_text(hjust = 0.5,
                                                        family = "Roboto Slab", face = "bold"),

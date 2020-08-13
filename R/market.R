@@ -1,6 +1,6 @@
-#' Fill the yummm market with food palettes
+#' @title Fill the yummm market with food palettes
 #'
-#' Fill the yummm market with a 10-color palette extracted from an image of the food.
+#' @description Fill the yummm market with a 10-color palette extracted from an image of the food. NB: This function is only used internally.
 #'
 #' @format
 #' Dataframe of two columns: \describe{
@@ -35,12 +35,3 @@ fill_market <- function(food, n = 10) {
 
   usethis::use_data(yummm_market, overwrite = TRUE)
 }
-
-# Create list of food colors
-# yummm.list <- list(
-#   banana = "#FFCF4A",
-#   avocado = "#332C34",
-#   kiwi = "#7FA430",
-#   orange = "#FFA210",
-#   blueberry = "#4F65AD"
-# )
