@@ -7,7 +7,7 @@
 yummm_palette(food, load_fonts = FALSE)
 }
 \arguments{
-\item{food}{a character vector representing the food of your choice.}
+\item{food}{Character vector. Food of your choice.}
 
 \item{load_fonts}{TRUE or FALSE. Load fonts to be used in visualisation. Default: FALSE.}
 }

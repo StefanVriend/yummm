@@ -11,11 +11,11 @@ smoothie(
 )
 }
 \arguments{
-\item{food}{a character vector representing the ingredients of your smoothie.}
+\item{food}{Character vector. Ingredients of your smoothie.}
 
-\item{shade}{a character vector representing the shade of your food of choice. Possible id's: "01":"10". Default is set to "01".}
+\item{shade}{Character vector. Shade of your food of choice. Possible id's: "01":"10". Default is set to "01".}
 
-\item{alpha}{a vector opacity levels, with compatible dimensions to \code{foods}. Each level in [0,1]. Default is \code{1/length(food)}.}
+\item{alpha}{Numeric vector. Opacity levels of ingredients of your smoothie. Each value in [0,1]. Default is \code{1/length(food)}.}
 }
 \value{
 A character string (in hexadecimal format) corresponding to the smoothie created with the food of your choice.

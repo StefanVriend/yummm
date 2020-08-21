@@ -3,9 +3,9 @@
 #'
 #' @description Use your favorite smoothie to color your graphics and texts.
 #'
-#' @param food a character vector representing the ingredients of your smoothie.
-#' @param shade a character vector representing the shade of your food of choice. Possible id's: "01":"10". Default is set to "01".
-#' @param alpha a vector opacity levels, with compatible dimensions to \code{foods}. Each level in [0,1]. Default is \code{1/length(food)}.
+#' @param food Character vector. Ingredients of your smoothie.
+#' @param shade Character vector. Shade of your food of choice. Possible id's: "01":"10". Default is set to "01".
+#' @param alpha Numeric vector. Opacity levels of ingredients of your smoothie. Each value in [0,1]. Default is \code{1/length(food)}.
 #'
 #' @return A character string (in hexadecimal format) corresponding to the smoothie created with the food of your choice.
 #'

@@ -2,7 +2,7 @@
 #'
 #' @description Visualization of the 10-color palette of your favorite food.
 #'
-#' @param food a character vector representing the food of your choice.
+#' @param food Character vector. Food of your choice.
 #' @param load_fonts TRUE or FALSE. Load fonts to be used in visualisation. Default: FALSE.
 #'
 #' @return A character string (in hexadecimal format) corresponding to the food of your choice.
@@ -20,13 +20,16 @@
 
 yummm_palette <- function(food, load_fonts = FALSE) {
 
+  # Select palette
   df <- yummm_market[[food]] %>%
     dplyr::mutate(N = 1,
                   TextColor = ifelse(shades::lightness(Color) > 60, "black", "white"),
                   Bar = rep(1:(length(Color) / 2), each = 2))
 
+  # Load Windows fonts
   if(load_fonts) extrafont::loadfonts(device = "win")
 
+  # Plot palette
   ggplot2::ggplot(df, ggplot2::aes(x = Bar, fill = Shade, y = N)) +
     ggplot2::geom_bar(stat = "identity", position = position_stack(reverse=T), width = 1) +
     ggplot2::scale_fill_manual(values = df$Color) +

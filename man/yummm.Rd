@@ -7,9 +7,9 @@
 yummm(food, shade)
 }
 \arguments{
-\item{food}{a character vector representing the food of your choice.}
+\item{food}{Character vector. Food of your choice.}
 
-\item{shade}{a character vector representing the shade of your food of choice. Possible id's: "01":"10".}
+\item{shade}{Character vector. Shade of your food of choice. Possible id's: "01":"10".}
 }
 \value{
 A character string (in hexadecimal format) corresponding to the food of your choice.

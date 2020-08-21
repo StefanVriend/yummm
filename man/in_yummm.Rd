@@ -7,10 +7,7 @@
 in_yummm(food)
 }
 \arguments{
-\item{food}{a character vector representing the food of your choice.}
-}
-\value{
-Logical, TRUE or FALSE
+\item{food}{Character vector. Food of your choice.}
 }
 \description{
 Find out whether your favorite food is part of the `yummm` package.

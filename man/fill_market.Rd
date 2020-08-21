@@ -3,14 +3,11 @@
 \name{fill_market}
 \alias{fill_market}
 \title{Fill the yummm market with food palettes}
-\format{
-Dataframe of two columns: \describe{
-  \item{Food}{a character. Food.}
-  \item{Palette}{a list. Palette of colors in hexadecimal format.}
-}
-}
 \usage{
-fill_market(food, n = 10)
+fill_market(food)
+}
+\arguments{
+\item{food}{Character. Food to be added to the market.}
 }
 \description{
 Fill the yummm market with a 10-color palette extracted from an image of the food. NB: This function is only used internally.

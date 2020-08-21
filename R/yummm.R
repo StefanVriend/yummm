@@ -3,8 +3,8 @@
 #'
 #' @description Use your favorite food to color your graphics and texts.
 #'
-#' @param food a character vector representing the food of your choice.
-#' @param shade a character vector representing the shade of your food of choice. Possible id's: "01":"10".
+#' @param food Character vector. Food of your choice.
+#' @param shade Character vector. Shade of your food of choice. Possible id's: "01":"10".
 #'
 #' @details Use \code{yummm_palette} to visualize all the shades of the food of your choice.
 #'
@@ -22,6 +22,7 @@
 
 yummm <- function(food, shade) {
 
+  # Error if food is not part of yummm.
   if(any(food %in% names(yummm_market) == FALSE)) {
     not_in_yummm <- food[!(food %in% names(yummm_market))]
 
@@ -34,15 +35,18 @@ yummm <- function(food, shade) {
                       sep="")
                 })
 
+    # Missing shades, set to "01".
   } else if(missing(shade)) {
 
     shade <- rep("01", length(food))
     cat("Shade is set to '01'. If you want a different shade, use yummm_palette() to pick your favorite.")
 
-  } else if(any(shade > 10)) {
+    # Impossible shade ID
+  } else if(!(shade %in% c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10"))) {
 
     cat("Yummm palettes contain 10 colours. Please select a lower ID.")
 
+    # Print color
   } else {
 
     purrr::map2(.x = food,
@@ -62,15 +66,12 @@ yummm <- function(food, shade) {
 #'
 #' @description Find out whether your favorite food is part of the `yummm` package.
 #'
+#' @param food Character vector. Food of your choice.
+#'
 #' @examples
 #' in_yummm("banana")
 #'
-#' @return Logical, TRUE or FALSE
-#'
-#' @inheritParams yummm
-#'
 #' @export
-#'
 
 in_yummm <- function(food) {
 

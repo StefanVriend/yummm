@@ -5,15 +5,15 @@
 \alias{yummm_market}
 \title{The yummm market: a table of food and palettes}
 \format{
-Dataframe of two columns: \describe{
-  \item{Food}{a character. Food.}
-  \item{Palette}{a list. Palette of colors in hexadecimal format.}
+A list of food names, each item is a dataframe of 10 rows and 2 columns: \describe{
+  \item{Color}{Character. Color in hexadecimal format.}
+  \item{Shade}{Character. Shade ID of each color ("01"--"10").}
 }
 }
 \usage{
 yummm_market
 }
 \description{
-A table with all food and palettes in \code{yummm}. The market is filled using \code{fill_market}.
+A list with all food and palettes in \code{yummm}. The market is filled using \code{fill_market}.
 }
 \keyword{datasets}

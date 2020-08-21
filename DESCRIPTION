@@ -8,9 +8,8 @@ Description: Create colorful and delicious graphics and texts using your favouri
 URL: https://github.com/StefanVriend/yummm
 BugReports: https://github.com/StefanVriend/yummm/issues
 Depends:
-     R (>= 2.10)
+     R (>= 3.6.0)
 Imports: 
-     crayon,
 		 dplyr,
 		 purrr,
 		 tibble
