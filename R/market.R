@@ -79,8 +79,8 @@ create_aliases <- function(food, alias) {
 
                                       }) == TRUE)
 
-      stop(paste0("Alias ", '"', alias, '"', " is already in use for ",
-                  names(yummm_aliases)[double]))
+      stop(paste0('"', alias, '"', " is already in use as an alias for ",
+                  '"', names(yummm_aliases)[double]), '".')
 
     }
 

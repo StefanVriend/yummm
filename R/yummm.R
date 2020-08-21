@@ -22,8 +22,24 @@
 
 yummm <- function(food, shade) {
 
+  # Missing shades, set to "01".
+  if(missing(shade)) {
+
+    shade <- rep("01", length(food))
+    cat("Shade is set to '01'. If you want a different shade, use yummm_palette() to pick your favorite.\n")
+
+  }
+
+  # Impossible shade ID
+  if(any(!(shade %in% c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10")))) {
+
+    cat("Yummm palettes contain 10 colours. Please select a different ID.\n")
+
+  }
+
   # Error if food is not part of yummm.
-  if(any(food %in% names(yummm_market) == FALSE)) {
+  if(any(food %in% names(yummm_market) == FALSE)
+     & any(food %in% unlist(yummm_aliases)) == FALSE) {
     not_in_yummm <- food[!(food %in% names(yummm_market))]
 
     purrr::walk(.x = not_in_yummm,
@@ -35,29 +51,40 @@ yummm <- function(food, shade) {
                       sep="")
                 })
 
-    # Missing shades, set to "01".
-  } else if(missing(shade)) {
 
-    shade <- rep("01", length(food))
-    cat("Shade is set to '01'. If you want a different shade, use yummm_palette() to pick your favorite.")
-
-    # Impossible shade ID
-  } else if(!(shade %in% c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10"))) {
-
-    cat("Yummm palettes contain 10 colours. Please select a lower ID.")
-
-    # Print color
   } else {
 
+    # Print color
     purrr::map2(.x = food,
                 .y = shade,
                 .f = ~{
-                  yummm_market[[.x]] %>%
-                    dplyr::filter(Shade == .y) %>%
-                    dplyr::pull(Color)
-                }) %>% unlist()
-  }
 
+                  # Alias color
+                  if(.x %in% unlist(yummm_aliases)) {
+
+                    alias <- .x
+                    double <- which(purrr::imap_lgl(.x = yummm_aliases,
+                                                    .f = ~{
+
+                                                      alias %in% .x
+
+                                                    }) == TRUE)
+                    yummm_market[[names(yummm_aliases)[double]]] %>%
+                      dplyr::filter(Shade == .y) %>%
+                      dplyr::pull(Color)
+
+                    # Market color
+                  } else {
+
+                    yummm_market[[.x]] %>%
+                      dplyr::filter(Shade == .y) %>%
+                      dplyr::pull(Color)
+
+                  }
+
+                }) %>% unlist()
+
+  }
 }
 
 
@@ -77,11 +104,31 @@ in_yummm <- function(food) {
 
   purrr::walk(.x = food,
               .f = ~{
-                part_of_yummm <- .x %in% names(yummm_market)
-                if(part_of_yummm == TRUE) {
+
+                part_of_market <- .x %in% names(yummm_market)
+                part_of_aliases <- .x %in% unlist(yummm_aliases)
+
+                if(part_of_market == TRUE) {
+
                   cat(crayon::cyan('"', .x, '"', " is part of yummm :)\n", sep=""))
+
+                } else if(part_of_aliases == TRUE) {
+
+                  alias <- .x
+                  double <- which(purrr::imap_lgl(.x = yummm_aliases,
+                                                  .f = ~{
+
+                                                    alias %in% .x
+
+                                                  }) == TRUE)
+
+                  cat(crayon::cyan('"', .x, '"', " is part of yummm as an alias for ",
+                                   '"', names(yummm_aliases)[double], '".\n', sep=""))
+
                 } else {
+
                   cat(crayon::red('"', .x, '"', " is not part of yummm :(\n", sep=""))
+
                 }
               })
 }
