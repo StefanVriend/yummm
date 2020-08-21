@@ -22,41 +22,63 @@
 smoothie <- function(food, shade = rep("01", length(food)),
                      alpha=rep(1/length(food), length(food))) {
 
-  colors <- purrr::map2(.x = food,
-              .y = shade,
-              .f = ~{
-                yummm_market[[.x]] %>%
-                  dplyr::filter(Shade == .y) %>%
-                  dplyr::pull(Color)
-              }) %>% unlist()
+  if(sum(alpha) != 1) stop(paste("Error: the alpha levels must sum to 1."))
 
-  if(sum(alpha) != 1) cat("Error: the alpha levels must sum to 1.")
+  # Error if food is not part of yummm.
+  if(any(food %in% names(yummm_market) == FALSE)
+     & any(food %in% unlist(yummm_aliases)) == FALSE) {
+    not_in_yummm <- food[!(food %in% names(yummm_market))]
 
-  if(sum(alpha) == 1) {
-    color_rgb <- t(grDevices::col2rgb(colors))
+    purrr::walk(.x = not_in_yummm,
+                .f = ~{
+                  cat("Error: ", '"', .x,  '"', " is ",
+                      crayon::underline("not"), " part of yummm.\n",
+                      "Find out whether your favorite food ",
+                      "is part of yummm using in_yummm().\n",
+                      sep="")
+                })
 
-    if(any(food %in% names(yummm_market) == FALSE)) {
-      not_in_yummm <- food[!(food %in% names(yummm_market))]
 
-      purrr::walk(.x = not_in_yummm,
-                  .f = ~{
-                    cat("Error: ", '"', .x,  '"', " is not part of yummm.\n",
-                        "Find out whether your favorite food ",
-                        "is part of yummm using in.yummm().\n",
-                        sep="")
-                  })
-    }
+  } else {
 
-    if(!any(food %in% names(yummm_market) == FALSE)) {
-      col2hex(c(ceiling(sum(colors_rgb[,1] * alpha)),
-                ceiling(sum(colors_rgb[,2] * alpha)),
-                ceiling(sum(colors_rgb[,3] * alpha))
-      )) -> smoothie
+    colors <- purrr::map2(.x = food,
+                          .y = shade,
+                          .f = ~{
 
-      return(smoothie)
-    }
+                            # Alias color
+                            if(.x %in% unlist(yummm_aliases)) {
+
+                              alias <- .x
+                              double <- which(purrr::imap_lgl(.x = yummm_aliases,
+                                                              .f = ~{
+
+                                                                alias %in% .x
+
+                                                              }) == TRUE)
+                              yummm_market[[names(yummm_aliases)[double]]] %>%
+                                dplyr::filter(Shade == .y) %>%
+                                dplyr::pull(Color)
+
+                              # Market color
+                            } else {
+
+                              yummm_market[[.x]] %>%
+                                dplyr::filter(Shade == .y) %>%
+                                dplyr::pull(Color)
+
+                            }
+
+                          }) %>% unlist()
+
+    colors_rgb <- t(grDevices::col2rgb(colors))
+
+    smoothie <- col2hex(c(ceiling(sum(colors_rgb[,1] * alpha)),
+                          ceiling(sum(colors_rgb[,2] * alpha)),
+                          ceiling(sum(colors_rgb[,3] * alpha))))
+
+    return(smoothie)
+
   }
-
 }
 
 # Convert color in RGB (red/green/blue) to hexadecimal format

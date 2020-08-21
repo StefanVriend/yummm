@@ -33,7 +33,7 @@ yummm <- function(food, shade) {
   # Impossible shade ID
   if(any(!(shade %in% c("01", "02", "03", "04", "05", "06", "07", "08", "09", "10")))) {
 
-    cat("Yummm palettes contain 10 colours. Please select a different ID.\n")
+    stop(paste("Yummm palettes contain 10 colours. Please select a different ID.\n"))
 
   }
 
