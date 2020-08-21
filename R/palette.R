@@ -23,7 +23,7 @@ yummm_palette <- function(food, load_fonts = FALSE) {
   # Select palette
   df <- yummm_market[[food]] %>%
     dplyr::mutate(N = 1,
-                  TextColor = ifelse(shades::lightness(Color) > 60, "black", "white"),
+                  TextColor = ifelse(shades::lightness(Color) > 55, "black", "white"),
                   Bar = rep(1:(length(Color) / 2), each = 2))
 
   # Load Windows fonts
